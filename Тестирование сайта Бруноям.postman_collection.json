@@ -1,0 +1,732 @@
+{
+	"info": {
+		"_postman_id": "d98d5718-9e9d-4c4f-96c3-b2f09aed464b",
+		"name": "Тестирование сайта Бруноям",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39450314"
+	},
+	"item": [
+		{
+			"name": "https://brunoyam.com/api/current_course?course_id=91",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(600);\r",
+							"});\r",
+							"pm.test('Проверка параметра поля', function () {\r",
+							"    var x = 91;\r",
+							"    var jsonData = pm.response.json();\r",
+							"    var urlName = jsonData.course.id;\r",
+							"    pm.expect(x).to.equal(urlName);\r",
+							"})\r",
+							"pm.test('Проверка параметра name', function (){\r",
+							"    var name = \"Тестировщик ПО\";\r",
+							"    var jsonData = pm.response.json();\r",
+							"    var urlName = jsonData.course.name_yml;\r",
+							"    pm.expect(name).to.equal(urlName);\r",
+							"})\r",
+							"pm.test('Проверка параметра 131', function (){\r",
+							"    var name = \"мы провели аналитику вакансий и будем учить вас только тому, <span>что нужно для трудоустройства</span>\";\r",
+							"    var jsonData = pm.response.json();\r",
+							"    var urlName = jsonData.course.settings.results_after_heading;\r",
+							"    pm.expect(name).to.equal(urlName);\r",
+							"})\r",
+							"pm.test('Проверка параметра 163', function (){\r",
+							"    var name = \"Исследовательское тестирование приложения\";\r",
+							"    var jsonData = pm.response.json();\r",
+							"    var urlName = jsonData.course.projects[0].title;\r",
+							"    pm.expect(name).to.equal(urlName);\r",
+							"})"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json, text/plain, */*"
+					},
+					{
+						"key": "accept-language",
+						"value": "en-US,en;q=0.9"
+					},
+					{
+						"key": "cookie",
+						"value": "sbjs_migrations=1418474375998%3D1; sbjs_current_add=fd%3D2024-11-17%2014%3A46%3A50%7C%7C%7Cep%3Dhttps%3A%2F%2Fbrunoyam.com%2F%7C%7C%7Crf%3Dhttps%3A%2F%2Fwww.google.com%2F; sbjs_first_add=fd%3D2024-11-17%2014%3A46%3A50%7C%7C%7Cep%3Dhttps%3A%2F%2Fbrunoyam.com%2F%7C%7C%7Crf%3Dhttps%3A%2F%2Fwww.google.com%2F; sbjs_current=typ%3Dorganic%7C%7C%7Csrc%3Dgoogle%7C%7C%7Cmdm%3Dorganic%7C%7C%7Ccmp%3D%28none%29%7C%7C%7Ccnt%3D%28none%29%7C%7C%7Ctrm%3D%28none%29; sbjs_first=typ%3Dorganic%7C%7C%7Csrc%3Dgoogle%7C%7C%7Cmdm%3Dorganic%7C%7C%7Ccmp%3D%28none%29%7C%7C%7Ccnt%3D%28none%29%7C%7C%7Ctrm%3D%28none%29; sbjs_udata=vst%3D1%7C%7C%7Cuip%3D%28none%29%7C%7C%7Cuag%3DMozilla%2F5.0%20%28Windows%20NT%2010.0%3B%20Win64%3B%20x64%29%20AppleWebKit%2F537.36%20%28KHTML%2C%20like%20Gecko%29%20Chrome%2F130.0.0.0%20Safari%2F537.36; advcake_track_id=b0aafd32-a93f-0809-982b-1e62daf6e0c7; advcake_session_id=0e50204e-da47-ed21-06ed-ef9b3271fedc; _gid=GA1.2.28489665.1731844011; analytic_id=1731844013070037; carrotquest_device_guid=8de07a51-1276-4842-bec1-3bc017a73554; carrotquest_uid=1843279272303659896; carrotquest_auth_token=user.1843279272303659896.32023-d7bee31880058a18ef0efe6784.df556e9b044e95b23d6bfc4efe201187ff5e24c2b35ca855; carrotquest_jwt_access=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdHQiOiJhY2Nlc3MiLCJleHAiOjE3MzE4NDc2MTIsImlhdCI6MTczMTg0NDAxMiwianRpIjoiMmE1ODY2MjhjMTVkNDZlYTk0ZTIzMzU5MTc0NzM0ZTciLCJhY3QiOiJ3ZWJfdXNlciIsImN0cyI6MTczMTg0NDAxMiwicm9sZXMiOlsidXNlci4kYXBwX2lkOjMyMDIzLiR1c2VyX2lkOjE4NDMyNzkyNzIzMDM2NTk4OTYiXSwiYXBwX2lkIjozMjAyMywidXNlcl9pZCI6MTg0MzI3OTI3MjMwMzY1OTg5Nn0.uiTj533PhSlU6Ae2ip1LvCJgz8KQAh0JaYgUZX8C0FM; carrotquest_realtime_services_transport=wss; _ym_uid=1731844016368300378; _ym_d=1731844016; _ym_isad=2; _ym_visorc=w; _ga=GA1.2.735681970.1731844011; carrotquest_session=p8yajz7ykgtf4s26256cq3uaacnddp80; advcake_track_url=%3D202411116DVUuPmXochCzJXqNTeTwWXf2Frd3FATITICU5ZCASnBqoCeZKGqNf5g35R%2B3%2BOcLaAUW30eOveBhLju5rdbfLMWXrbu0cZmp2N5fl5Caa2RuY%2B649FEZAJqNpTUEFy%2FDldOL8Y200yVKKm01%2BecdZXHybzMPQ8XvF1aY17iozq4y%2FE9BrID8n1Phr2TsCq%2BmY3JKThqJJZmIkk0QAUMmNYB%2FuQdu%2BE8deYgT10lIhjBU6hMHAcGH4ydMo56xIK5%2BgIFTQdPytYixdhPFNkcS4wxi7zKY1MomROW%2BrLD8QqedozjCcIctu76LcPUFGD6aob53MCej2SnIVQDNjG67%2BC046Wzvz71F1oBfZEabX3V0R0yWJz06PMcEnbImwGiddDlL3UxY%2BVKoqkprlz0eSFWoERNvwrSaV%2F8rXkA%2BbdHz1ysXY1bthQ2lGBS3xXEbmApmaL%2BaWvljOcUwN%2BEEVhnD%2FIyele3e5rz%2Bo6ahEihjWnbLzzONcr7u2NyqDeRY8TkI4V7%2Bmr60p%2FJxganPpAMMmmP1pMrq6N6Ml0XX7F%2B8P1fdsU1bpAmsAFK9eHaCGpvBmuXsTCjhr%2FEWpSTr8uQvzg%2BtMnRFOtVlgfqN4iEQRG9SSGbdItd5%2BkGyKFxsWXFna8C%2BigQVjLI8dimwq%2BqKZCK5Vvy%2BjFd1MVDNuH0E8mZXjF%2FeYA%3D; carrotquest_session_started=1; XSRF-TOKEN=eyJpdiI6Imhic3ptOHd2RVIxNWlJVGNsaGdjSGc9PSIsInZhbHVlIjoibTlCYXlRbVJRK283QWJMNVVkeU9ZRHdpQ1p5aVN6YXloVU9OQWNoUHI4UTNPUlMwYU9WckQ4OVRoNEtMeFgzcmgvNC9GeHFqa2Yrb2w0emgzcDV0ZmxqbkdpZThzUlFZbVJybTBGMFFxMzVUYTUvMHNoME5LVDhaNlpUQ0hxOGQiLCJtYWMiOiIzOGI4MjY2ZTA4N2I0YjFmYjc0OWE5MjMwOGNkN2FmYWI5OGJlZTcyNThjMDgyMWQxYTc1NDQyZTlmZGIzZWVhIiwidGFnIjoiIn0%3D; brunoyam_session=eyJpdiI6ImFKVzJvYUhkWnVMbWtBaWorbUFpQ3c9PSIsInZhbHVlIjoiL2M0QmVYNWJQUXB6dVpiYmJibitranhEVW5LTXpHdS8zdVhoTGlLVExsQVRGcDBFNyt1U2xqWGVtb2w2ODVPcWk5bU9ycWUwc3JlYXg1eCtaQnFrcjQ3dVgzM3BvVnNiSUJvb0hVME82RlRtbnl0Y3dLWVFBRlVOQXR1bDB0SDAiLCJtYWMiOiI5ZTg3YTM2ODI2NGE4NWM4MDJkZmE5MDcyMThlNmIwNWRhZWI0YWU4YjVmYmNkNTYxYWI5ZDVmYjBlZGI5NTc3IiwidGFnIjoiIn0%3D; _ga_JJ5D9LHCRV=GS1.1.1731844010.1.1.1731845211.60.0.0; sbjs_session=pgs%3D43%7C%7C%7Ccpg%3Dhttps%3A%2F%2Fbrunoyam.com%2Fonline-kursy%2Fqa"
+					},
+					{
+						"key": "priority",
+						"value": "u=1, i"
+					},
+					{
+						"key": "referer",
+						"value": "https://brunoyam.com/online-kursy/qa"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\"Chromium\";v=\"130\", \"Google Chrome\";v=\"130\", \"Not?A_Brand\";v=\"99\""
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					},
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"Windows\""
+					},
+					{
+						"key": "sec-fetch-dest",
+						"value": "empty"
+					},
+					{
+						"key": "sec-fetch-mode",
+						"value": "cors"
+					},
+					{
+						"key": "sec-fetch-site",
+						"value": "same-origin"
+					},
+					{
+						"key": "user-agent",
+						"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"
+					},
+					{
+						"key": "x-csrf-token",
+						"value": "cp5w4xHMof40OcD8SBwyeaUBpFbkciUbkREpCGWp"
+					},
+					{
+						"key": "x-requested-with",
+						"value": "XMLHttpRequest"
+					},
+					{
+						"key": "x-xsrf-token",
+						"value": "eyJpdiI6Imhic3ptOHd2RVIxNWlJVGNsaGdjSGc9PSIsInZhbHVlIjoibTlCYXlRbVJRK283QWJMNVVkeU9ZRHdpQ1p5aVN6YXloVU9OQWNoUHI4UTNPUlMwYU9WckQ4OVRoNEtMeFgzcmgvNC9GeHFqa2Yrb2w0emgzcDV0ZmxqbkdpZThzUlFZbVJybTBGMFFxMzVUYTUvMHNoME5LVDhaNlpUQ0hxOGQiLCJtYWMiOiIzOGI4MjY2ZTA4N2I0YjFmYjc0OWE5MjMwOGNkN2FmYWI5OGJlZTcyNThjMDgyMWQxYTc1NDQyZTlmZGIzZWVhIiwidGFnIjoiIn0="
+					}
+				],
+				"url": {
+					"raw": "https://brunoyam.com/api/current_course?course_id=91",
+					"protocol": "https",
+					"host": [
+						"brunoyam",
+						"com"
+					],
+					"path": [
+						"api",
+						"current_course"
+					],
+					"query": [
+						{
+							"key": "course_id",
+							"value": "91"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Картинка 1.0",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Проверка картинки на статус код 200', function () {\r",
+							"    var testresult = Boolean(pm.response.to.have.status(200));\r",
+							"   pm.sendRequest('https://api.telegram.org/bot7780560226:AAG5FMcjvKZgkPUyn8CP3ITgV7JDlqgE57E/sendMessage?chat_id=938064300&text=Проверка картинки 1.0 на статус код 200=' + ' ' + JSON.stringify(testresult));\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"Windows\""
+					},
+					{
+						"key": "Referer",
+						"value": "https://brunoyam.com/kursy-programmirovaniya/qa-testirovsshik-s-nulya"
+					},
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\"Google Chrome\";v=\"131\", \"Chromium\";v=\"131\", \"Not_A Brand\";v=\"24\""
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					}
+				],
+				"url": {
+					"raw": "https://brunoyam.com/storage/client/1.png",
+					"protocol": "https",
+					"host": [
+						"brunoyam",
+						"com"
+					],
+					"path": [
+						"storage",
+						"client",
+						"1.png"
+					]
+				},
+				"description": "Generated from cURL: curl 'https://brunoyam.com/storage/client/1.png' \\\r\n  -H 'sec-ch-ua-platform: \"Windows\"' \\\r\n  -H 'Referer: https://brunoyam.com/kursy-programmirovaniya/qa-testirovsshik-s-nulya' \\\r\n  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36' \\\r\n  -H 'sec-ch-ua: \"Google Chrome\";v=\"131\", \"Chromium\";v=\"131\", \"Not_A Brand\";v=\"24\"' \\\r\n  -H 'sec-ch-ua-mobile: ?0'"
+			},
+			"response": []
+		},
+		{
+			"name": "Картинка 1.1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Проверка картинки на статус код 200', function () {\r",
+							"    var testresult = Boolean(pm.response.to.have.status(200));\r",
+							"   pm.sendRequest('https://api.telegram.org/bot7780560226:AAG5FMcjvKZgkPUyn8CP3ITgV7JDlqgE57E/sendMessage?chat_id=938064300&text=Проверка картинки 1.1 на статус код 200=' + ' ' + JSON.stringify(testresult));\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"Windows\""
+					},
+					{
+						"key": "Referer",
+						"value": "https://brunoyam.com/kursy-programmirovaniya/qa-testirovsshik-s-nulya"
+					},
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\"Google Chrome\";v=\"131\", \"Chromium\";v=\"131\", \"Not_A Brand\";v=\"24\""
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					}
+				],
+				"url": {
+					"raw": "https://brunoyam.com/storage/client/color/1.png",
+					"protocol": "https",
+					"host": [
+						"brunoyam",
+						"com"
+					],
+					"path": [
+						"storage",
+						"client",
+						"color",
+						"1.png"
+					]
+				},
+				"description": "Generated from cURL: curl 'https://brunoyam.com/storage/client/color/1.png' \\\r\n  -H 'sec-ch-ua-platform: \"Windows\"' \\\r\n  -H 'Referer: https://brunoyam.com/kursy-programmirovaniya/qa-testirovsshik-s-nulya' \\\r\n  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36' \\\r\n  -H 'sec-ch-ua: \"Google Chrome\";v=\"131\", \"Chromium\";v=\"131\", \"Not_A Brand\";v=\"24\"' \\\r\n  -H 'sec-ch-ua-mobile: ?0'"
+			},
+			"response": []
+		},
+		{
+			"name": "Картинка 2.0",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Проверка картинки на статус код 200', function () {\r",
+							"    var testresult = Boolean(pm.response.to.have.status(200));\r",
+							"   pm.sendRequest('https://api.telegram.org/bot7780560226:AAG5FMcjvKZgkPUyn8CP3ITgV7JDlqgE57E/sendMessage?chat_id=938064300&text=Проверка картинки 2.0 на статус код 200=' + ' ' + JSON.stringify(testresult));\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"Windows\""
+					},
+					{
+						"key": "Referer",
+						"value": "https://brunoyam.com/kursy-programmirovaniya/qa-testirovsshik-s-nulya"
+					},
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\"Google Chrome\";v=\"131\", \"Chromium\";v=\"131\", \"Not_A Brand\";v=\"24\""
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					}
+				],
+				"url": {
+					"raw": "https://brunoyam.com/storage/client/2.png",
+					"protocol": "https",
+					"host": [
+						"brunoyam",
+						"com"
+					],
+					"path": [
+						"storage",
+						"client",
+						"2.png"
+					]
+				},
+				"description": "Generated from cURL: curl 'https://brunoyam.com/storage/client/2.png' \\\r\n  -H 'sec-ch-ua-platform: \"Windows\"' \\\r\n  -H 'Referer: https://brunoyam.com/kursy-programmirovaniya/qa-testirovsshik-s-nulya' \\\r\n  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36' \\\r\n  -H 'sec-ch-ua: \"Google Chrome\";v=\"131\", \"Chromium\";v=\"131\", \"Not_A Brand\";v=\"24\"' \\\r\n  -H 'sec-ch-ua-mobile: ?0'"
+			},
+			"response": []
+		},
+		{
+			"name": "Каринка 2.1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Проверка картинки на статус код 200', function () {\r",
+							"    var testresult = Boolean(pm.response.to.have.status(200));\r",
+							"   pm.sendRequest('https://api.telegram.org/bot7780560226:AAG5FMcjvKZgkPUyn8CP3ITgV7JDlqgE57E/sendMessage?chat_id=938064300&text=Проверка картинки 2.1 на статус код 200=' + ' ' + JSON.stringify(testresult));\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"Windows\""
+					},
+					{
+						"key": "Referer",
+						"value": "https://brunoyam.com/kursy-programmirovaniya/qa-testirovsshik-s-nulya"
+					},
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\"Google Chrome\";v=\"131\", \"Chromium\";v=\"131\", \"Not_A Brand\";v=\"24\""
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					}
+				],
+				"url": {
+					"raw": "https://brunoyam.com/storage/client/color/2.png",
+					"protocol": "https",
+					"host": [
+						"brunoyam",
+						"com"
+					],
+					"path": [
+						"storage",
+						"client",
+						"color",
+						"2.png"
+					]
+				},
+				"description": "Generated from cURL: curl 'https://brunoyam.com/storage/client/color/2.png' \\\r\n  -H 'sec-ch-ua-platform: \"Windows\"' \\\r\n  -H 'Referer: https://brunoyam.com/kursy-programmirovaniya/qa-testirovsshik-s-nulya' \\\r\n  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36' \\\r\n  -H 'sec-ch-ua: \"Google Chrome\";v=\"131\", \"Chromium\";v=\"131\", \"Not_A Brand\";v=\"24\"' \\\r\n  -H 'sec-ch-ua-mobile: ?0'"
+			},
+			"response": []
+		},
+		{
+			"name": "Картинка 3.0",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Проверка картинки на статус код 200', function () {\r",
+							"    var testresult = Boolean(pm.response.to.have.status(200));\r",
+							"   pm.sendRequest('https://api.telegram.org/bot7780560226:AAG5FMcjvKZgkPUyn8CP3ITgV7JDlqgE57E/sendMessage?chat_id=938064300&text=Проверка картинки 3.0 на статус код 200=' + ' ' + JSON.stringify(testresult));\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"Windows\""
+					},
+					{
+						"key": "Referer",
+						"value": "https://brunoyam.com/kursy-programmirovaniya/qa-testirovsshik-s-nulya"
+					},
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\"Google Chrome\";v=\"131\", \"Chromium\";v=\"131\", \"Not_A Brand\";v=\"24\""
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					}
+				],
+				"url": {
+					"raw": "https://brunoyam.com/storage/client/3.png",
+					"protocol": "https",
+					"host": [
+						"brunoyam",
+						"com"
+					],
+					"path": [
+						"storage",
+						"client",
+						"3.png"
+					]
+				},
+				"description": "Generated from cURL: curl 'https://brunoyam.com/storage/client/3.png' \\\r\n  -H 'sec-ch-ua-platform: \"Windows\"' \\\r\n  -H 'Referer: https://brunoyam.com/kursy-programmirovaniya/qa-testirovsshik-s-nulya' \\\r\n  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36' \\\r\n  -H 'sec-ch-ua: \"Google Chrome\";v=\"131\", \"Chromium\";v=\"131\", \"Not_A Brand\";v=\"24\"' \\\r\n  -H 'sec-ch-ua-mobile: ?0'"
+			},
+			"response": []
+		},
+		{
+			"name": "Картинка 3.1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});pm.test('Проверка картинки на статус код 200', function () {\r",
+							"    var testresult = Boolean(pm.response.to.have.status(200));\r",
+							"   pm.sendRequest('https://api.telegram.org/bot7780560226:AAG5FMcjvKZgkPUyn8CP3ITgV7JDlqgE57E/sendMessage?chat_id=938064300&text=Проверка картинки 3.1 на статус код 200=' + ' ' + JSON.stringify(testresult));\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"Windows\""
+					},
+					{
+						"key": "Referer",
+						"value": "https://brunoyam.com/kursy-programmirovaniya/qa-testirovsshik-s-nulya"
+					},
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\"Google Chrome\";v=\"131\", \"Chromium\";v=\"131\", \"Not_A Brand\";v=\"24\""
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					}
+				],
+				"url": {
+					"raw": "https://brunoyam.com/storage/client/color/3.png",
+					"protocol": "https",
+					"host": [
+						"brunoyam",
+						"com"
+					],
+					"path": [
+						"storage",
+						"client",
+						"color",
+						"3.png"
+					]
+				},
+				"description": "Generated from cURL: curl 'https://brunoyam.com/storage/client/color/3.png' \\\r\n  -H 'sec-ch-ua-platform: \"Windows\"' \\\r\n  -H 'Referer: https://brunoyam.com/kursy-programmirovaniya/qa-testirovsshik-s-nulya' \\\r\n  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36' \\\r\n  -H 'sec-ch-ua: \"Google Chrome\";v=\"131\", \"Chromium\";v=\"131\", \"Not_A Brand\";v=\"24\"' \\\r\n  -H 'sec-ch-ua-mobile: ?0'"
+			},
+			"response": []
+		},
+		{
+			"name": "Картинка 4.0",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Проверка картинки на статус код 200', function () {\r",
+							"    var testresult = Boolean(pm.response.to.have.status(200));\r",
+							"   pm.sendRequest('https://api.telegram.org/bot7780560226:AAG5FMcjvKZgkPUyn8CP3ITgV7JDlqgE57E/sendMessage?chat_id=938064300&text=Проверка картинки 4.0 на статус код 200=' + ' ' + JSON.stringify(testresult));\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"Windows\""
+					},
+					{
+						"key": "Referer",
+						"value": "https://brunoyam.com/kursy-programmirovaniya/qa-testirovsshik-s-nulya"
+					},
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\"Google Chrome\";v=\"131\", \"Chromium\";v=\"131\", \"Not_A Brand\";v=\"24\""
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					}
+				],
+				"url": {
+					"raw": "https://brunoyam.com/storage/client/4.png",
+					"protocol": "https",
+					"host": [
+						"brunoyam",
+						"com"
+					],
+					"path": [
+						"storage",
+						"client",
+						"4.png"
+					]
+				},
+				"description": "Generated from cURL: curl 'https://brunoyam.com/storage/client/4.png' \\\r\n  -H 'sec-ch-ua-platform: \"Windows\"' \\\r\n  -H 'Referer: https://brunoyam.com/kursy-programmirovaniya/qa-testirovsshik-s-nulya' \\\r\n  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36' \\\r\n  -H 'sec-ch-ua: \"Google Chrome\";v=\"131\", \"Chromium\";v=\"131\", \"Not_A Brand\";v=\"24\"' \\\r\n  -H 'sec-ch-ua-mobile: ?0'"
+			},
+			"response": []
+		},
+		{
+			"name": "Картинка 4.1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Проверка картинки на статус код 200', function () {\r",
+							"    var testresult = Boolean(pm.response.to.have.status(200));\r",
+							"   pm.sendRequest('https://api.telegram.org/bot7780560226:AAG5FMcjvKZgkPUyn8CP3ITgV7JDlqgE57E/sendMessage?chat_id=938064300&text=Проверка картинки 4.1 на статус код 200=' + ' ' + JSON.stringify(testresult));\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"Windows\""
+					},
+					{
+						"key": "Referer",
+						"value": "https://brunoyam.com/kursy-programmirovaniya/qa-testirovsshik-s-nulya"
+					},
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\"Google Chrome\";v=\"131\", \"Chromium\";v=\"131\", \"Not_A Brand\";v=\"24\""
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					}
+				],
+				"url": {
+					"raw": "https://brunoyam.com/storage/client/color/4.png",
+					"protocol": "https",
+					"host": [
+						"brunoyam",
+						"com"
+					],
+					"path": [
+						"storage",
+						"client",
+						"color",
+						"4.png"
+					]
+				},
+				"description": "Generated from cURL: curl 'https://brunoyam.com/storage/client/color/4.png' \\\r\n  -H 'sec-ch-ua-platform: \"Windows\"' \\\r\n  -H 'Referer: https://brunoyam.com/kursy-programmirovaniya/qa-testirovsshik-s-nulya' \\\r\n  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36' \\\r\n  -H 'sec-ch-ua: \"Google Chrome\";v=\"131\", \"Chromium\";v=\"131\", \"Not_A Brand\";v=\"24\"' \\\r\n  -H 'sec-ch-ua-mobile: ?0'"
+			},
+			"response": []
+		},
+		{
+			"name": "Картинка 5.0",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Проверка картинки на статус код 200', function () {\r",
+							"    var testresult = Boolean(pm.response.to.have.status(200));\r",
+							"   pm.sendRequest('https://api.telegram.org/bot7780560226:AAG5FMcjvKZgkPUyn8CP3ITgV7JDlqgE57E/sendMessage?chat_id=938064300&text=Проверка картинки 5.0 на статус код 200=' + ' ' + JSON.stringify(testresult));\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"Windows\""
+					},
+					{
+						"key": "Referer",
+						"value": "https://brunoyam.com/kursy-programmirovaniya/qa-testirovsshik-s-nulya"
+					},
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\"Google Chrome\";v=\"131\", \"Chromium\";v=\"131\", \"Not_A Brand\";v=\"24\""
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					}
+				],
+				"url": {
+					"raw": "https://brunoyam.com/storage/client/5.png",
+					"protocol": "https",
+					"host": [
+						"brunoyam",
+						"com"
+					],
+					"path": [
+						"storage",
+						"client",
+						"5.png"
+					]
+				},
+				"description": "Generated from cURL: curl 'https://brunoyam.com/storage/client/5.png' \\\r\n  -H 'sec-ch-ua-platform: \"Windows\"' \\\r\n  -H 'Referer: https://brunoyam.com/kursy-programmirovaniya/qa-testirovsshik-s-nulya' \\\r\n  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36' \\\r\n  -H 'sec-ch-ua: \"Google Chrome\";v=\"131\", \"Chromium\";v=\"131\", \"Not_A Brand\";v=\"24\"' \\\r\n  -H 'sec-ch-ua-mobile: ?0'"
+			},
+			"response": []
+		},
+		{
+			"name": "Картинка 5.1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Проверка картинки на статус код 200', function () {\r",
+							"    var testresult = Boolean(pm.response.to.have.status(200));\r",
+							"   pm.sendRequest('https://api.telegram.org/bot7780560226:AAG5FMcjvKZgkPUyn8CP3ITgV7JDlqgE57E/sendMessage?chat_id=938064300&text=Проверка картинки 5.1 на статус код 200=' + ' ' + JSON.stringify(testresult));\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"Windows\""
+					},
+					{
+						"key": "Referer",
+						"value": "https://brunoyam.com/kursy-programmirovaniya/qa-testirovsshik-s-nulya"
+					},
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\"Google Chrome\";v=\"131\", \"Chromium\";v=\"131\", \"Not_A Brand\";v=\"24\""
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					}
+				],
+				"url": {
+					"raw": "https://brunoyam.com/storage/client/color/5.png",
+					"protocol": "https",
+					"host": [
+						"brunoyam",
+						"com"
+					],
+					"path": [
+						"storage",
+						"client",
+						"color",
+						"5.png"
+					]
+				},
+				"description": "Generated from cURL: curl 'https://brunoyam.com/storage/client/color/5.png' \\\r\n  -H 'sec-ch-ua-platform: \"Windows\"' \\\r\n  -H 'Referer: https://brunoyam.com/kursy-programmirovaniya/qa-testirovsshik-s-nulya' \\\r\n  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36' \\\r\n  -H 'sec-ch-ua: \"Google Chrome\";v=\"131\", \"Chromium\";v=\"131\", \"Not_A Brand\";v=\"24\"' \\\r\n  -H 'sec-ch-ua-mobile: ?0'"
+			},
+			"response": []
+		}
+	]
+}
